@@ -1,3 +1,3 @@
 ### Hello World!
-###### Avinash here!!!
-# Thanks for visiting
+# Avinash here!!!
+###### Thanks for visiting
