@@ -3,54 +3,44 @@
 <head>
     <meta charset = "UTF-8" />
     <meta name = "viewport" content = "width=device-width, initial_scale = 1.0" />
-    <title>My Portfolio</title>
+    <title>Avinash Emmanuel</title>
     <link rel = "stylesheet" href = "style.css" />
 </head>
 <body>
-    <!--Header Navigation-->
+    <div class="theme-toggle">
+        <button onclick="toggleTheme()">🌗 Toggle Theme</button>
+    </div>
     <header>
-        <nav>
-            <h1>Avinash Ben Emmanuel</h1>
-            <ul>
-                <li><a href = "#home">Home</a></li>
-                <li><a href = "#about">About</a></li>
-                <li><a href = "#projects">Projects</a></li>
-                <li><a href = "#contact">Contact</a></li>
-            </ul>
-        </nav>
+        <div class="left">
+            <p>Based in <br><a href="#">Dehradun, India</a></p>
+            <p><a href="#" onclick="toggleTheme()">Switch to Dark mode</a></p>
+        </div>
+
+        <div class="center">
+            <img src="me.jpg" alt="Your Avatar" class="avatar">
+            <h1>Avinash Emmanuel</h1>
+            <p class="tagline"><strong>Aspiring Engineer</strong><br>Crafting digital experiences</p>
+        </div>
+
+        <div class="right">
+            <nav>
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#blog">Blog</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
     </header>
 
-    <!--Home Section-->
-    <section id = "home">
-        <h2>Welcome to my portfolio</h2>
-        <p>I'm a passionate developer/designer/musician. Explore my work below</p>
+    <section id="contact" class="bottom-right">
+        <p>Want to hire me?<br>
+        <a href="mailto:avinashben29@gmail.com">Contact Me</a></p>
     </section>
 
-    <!--About Section-->
-    <section id = "about">
-        <h2>About Me</h2>
-        <p>__________</p>
-    </section>
-
-    <!--Projects Section-->
-    <section id = "projects">
-        <h2>Projects</h2>
-        <div class = "project">
-            <h3>Project title</h3>
-            <p>________</p>
-        </div>
-    </section>
-
-    <!--Contact Section-->
-    <section id = "contact">
-        <h2>Contact Me</h2>
-        <p>Email: avinashben29@gmail.com</p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/avinash2906" target="_blank">Avinash Ben Emmanuel</a></p>
-    </section>
-
-    <!--Footer-->
-    <footer>
-        <p>© 2025 Avinash Ben Emmanuel. All rights reserved.</p>
-    </footer>
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('dark');
+        }
+    </script>
 </body>
 </html>

@@ -6,74 +6,88 @@
 }
 
 body {
-    background-color: #f8f9fa;
-    color: #333;
-    line-height: 1.6;
-    padding: 20px;
+    background: #fdfdfd;
+    color: #111;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: background 0.3s, color 0.3s;
 }
 
-/*header*/
 header {
-    background-color: #343a40;
-    color: white;
-    padding: 20px;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px;
+    position: relative;
 }
 
-nav a{
-    color: #f8f9fa;
-    margin: 0 10px;
-    text-decoration: none;
-    font-weight: bold;
+.left, .right {
+    width: 20%;
+    font-size: 14px;
 }
 
-nav a:hover {
+.left a, .right a {
+    color: inherit;
     text-decoration: underline;
 }
 
-/*main content*/
-section {
-    padding: 40px 20px;
-    max-width: 900px;
-    margin: auto;
-}
-
-h1, h2 {
-    margin-bottom: 20px;
-    color: #212529;
-}
-
-p {
-    margin-bottom: 15px;
-}
-
-/*project cards*/
-.project {
-    background-color: white;
-    border: 1px solid #dee2e6;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
-
-/*footer*/
-footer {
+.center {
     text-align: center;
-    padding: 20px;
-    margin-top: 40px;
-    background-color: #e9ecef;
-    color: #6c757d;
+    width: 60%;
 }
 
-/*responsive*/
-@media (max-width: 600px) {
-    nav a {
-        display: block;
-        margin: 5px 0;
-    }
+.center h1 {
+    font-size: 3rem;
+    margin-top: 20px;
+}
 
-    section {
-        padding: 20px 10px;
-    }
+.tagline {
+    margin-top: 10px;
+    font-size: 1.1rem;
+    color: #666;
+}
+
+.avatar {
+    width: 150px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+}
+
+.bottom-right {
+    position: absolute;
+    bottom: 20px;
+    right: 40px;
+    font-size: 14px;
+}
+
+.bottom-right a {
+    text-decoration: underline;
+    color: #007bff;
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.theme-toggle button {
+    padding: 6px 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+body.dark {
+    background: #1e1e1e;
+    color: #eee;
+}
+
+body.dark .tagline {
+    color: #bbb;
+}
+
+body.dark .avatar {
+    border-color: #555;
 }
