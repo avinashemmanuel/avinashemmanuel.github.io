@@ -1,46 +1,42 @@
 <!DOCTYPE html>
-<html lang = "en">
+<html lang="en">
 <head>
-    <meta charset = "UTF-8" />
-    <meta name = "viewport" content = "width=device-width, initial_scale = 1.0" />
-    <title>Avinash Emmanuel</title>
-    <link rel = "stylesheet" href = "style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Avinash Emmanuel</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <div class="theme-toggle">
-        <button onclick="toggleTheme()">🌗 Toggle Theme</button>
+  <div class="info-left">
+    <p>Based in<br><a href="#">Dehradun, India</a></p>
+    <p><a href="#" onclick="toggleDarkMode()">Switch to<br><span id="theme-text">Dark mode</span></a></p>
+  </div>
+
+  <div class="info-right">
+    <nav>
+      <a href="#about">About</a>
+      <a href="#blog">Blog</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+
+  <main class="center-content">
+    <img src="me.jpg" alt="Avinash Emmanuel" class="profile-img" />
+    <h1>Avinash Emmanuel</h1>
+    <h2>A Front-end Engineer</h2>
+    <p>Crafting digital experiences</p>
+    <div class="hire">
+      <p>Want to hire me?<br><a href="mailto:avinashbenemmanuel1912@gmail.com">Contact Me</a></p>
     </div>
-    <header>
-        <div class="left">
-            <p>Based in <br><a href="#">Dehradun, India</a></p>
-            <p><a href="#" onclick="toggleTheme()">Switch to Dark mode</a></p>
-        </div>
+  </main>
 
-        <div class="center">
-            <img src="me.jpg" alt="Your Avatar" class="avatar">
-            <h1>Avinash Emmanuel</h1>
-            <p class="tagline"><strong>Aspiring Engineer</strong><br>Crafting digital experiences</p>
-        </div>
-
-        <div class="right">
-            <nav>
-                <a href="#about">About</a>
-                <a href="#projects">Projects</a>
-                <a href="#blog">Blog</a>
-                <a href="#contact">Contact</a>
-            </nav>
-        </div>
-    </header>
-
-    <section id="contact" class="bottom-right">
-        <p>Want to hire me?<br>
-        <a href="mailto:avinashben29@gmail.com">Contact Me</a></p>
-    </section>
-
-    <script>
-        function toggleTheme() {
-            document.body.classList.toggle('dark');
-        }
-    </script>
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark");
+      const themeText = document.getElementById("theme-text");
+      themeText.textContent = document.body.classList.contains("dark") ? "Light mode" : "Dark mode";
+    }
+  </script>
 </body>
 </html>
