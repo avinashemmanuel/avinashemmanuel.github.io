@@ -1,91 +1,111 @@
+/* Reset and base styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Courier New', Courier, monospace;
 }
 
 body {
-  background-color: #f2f2f2;
-  color: #333;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  background: url('me.jpg') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Arial Black', Arial, sans-serif;
+  color: white;
   position: relative;
-  transition: background-color 0.3s, color 0.3s;
 }
 
-.dark {
-  background-color: #121212;
-  color: #eee;
+.overlay {
+  width: 100%;
+  height: 100%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
 }
 
-.info-left {
+/* Top Left */
+.top-left {
   position: absolute;
-  left: 20px;
-  top: 20px;
-  text-align: left;
-  font-size: 14px;
+  top: 40px;
+  left: 40px;
+  max-width: 50%;
 }
 
-.info-left a {
-  color: #333;
-  text-decoration: underline;
-}
-
-.dark .info-left a {
-  color: #ccc;
-}
-
-.info-right {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-}
-
-nav a {
-  margin-left: 20px;
-  text-decoration: none;
-  color: #333;
+.top-left h1 {
+  font-size: 3.5em;
   font-weight: bold;
+  line-height: 1.1;
 }
 
-.dark nav a {
-  color: #eee;
+.top-left .name {
+  font-size: 4em;
 }
 
-.center-content {
-  max-width: 600px;
+.top-left .role {
+  margin-top: 20px;
+  font-size: 1.5em;
+  font-weight: normal;
 }
 
-.profile-img {
-  width: 220px;
-  height: 220px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 20px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+/* Top Right */
+.top-right {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  text-align: right;
 }
 
-h1 {
-  font-size: 2.5em;
-  margin-bottom: 0.3em;
-}
-
-h2 {
+.top-right p {
   font-size: 1.2em;
   font-weight: bold;
-  margin-bottom: 0.2em;
 }
 
-.hire {
-  margin-top: 30px;
+.top-right ul {
+  list-style: none;
+  margin-top: 20px;
+}
+
+.top-right ul li {
+  margin: 10px 0;
+}
+
+.top-right a {
+  color: white;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+/* Bottom Left */
+.bottom-left {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
   font-size: 0.9em;
 }
 
-.hire a {
-  color: #007BFF;
+.bottom-left a {
+  color: white;
+  font-weight: bold;
   text-decoration: underline;
+}
+
+/* Bottom Right */
+.bottom-right {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  font-size: 0.9em;
+  text-align: right;
+}
+
+.bottom-right a {
+  color: white;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* Dark Mode (optional styling tweaks) */
+body.dark {
+  filter: brightness(0.7);
 }

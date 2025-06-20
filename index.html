@@ -1,42 +1,38 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Avinash Emmanuel</title>
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hi I'm Avinash</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="info-left">
-    <p>Based in<br><a href="#">Dehradun, India</a></p>
-    <p><a href="#" onclick="toggleDarkMode()">Switch to<br><span id="theme-text">Dark mode</span></a></p>
-  </div>
+    <div class="overlay">
 
-  <div class="info-right">
-    <nav>
-      <a href="#about">About</a>
-      <a href="#blog">Blog</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </div>
+        <div class="top-left">
+            <h1>HI I'M<br><span class="name">AVINASH</span></h1>
+            <p class="role">A Developer / Musician.<br>Crafting digital experiences.</p>
+        </div>
 
-  <main class="center-content">
-    <img src="me.jpg" alt="Avinash Emmanuel" class="profile-img" />
-    <h1>Avinash Emmanuel</h1>
-    <h2>A Front-end Engineer</h2>
-    <p>Crafting digital experiences</p>
-    <div class="hire">
-      <p>Want to hire me?<br><a href="mailto:avinashbenemmanuel1912@gmail.com">Contact Me</a></p>
+        <div class="top-right">
+            <p><strong>BASED IN<br>DEHRADUN, INDIA</strong></p>
+            <ul>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#blog">BLOG</a></li>
+                <li><a href="#projects">PROJECTS</a></li>
+            </ul>
+        </div>
+
+        <div class="bottom-right">
+            <p>WANT TO<br>HIRE ME?<a href="mailto:avinashben29@gmail.com">CONTACT</a></p>
+        </div>
+
     </div>
-  </main>
 
-  <script>
-    function toggleDarkMode() {
-      document.body.classList.toggle("dark");
-      const themeText = document.getElementById("theme-text");
-      themeText.textContent = document.body.classList.contains("dark") ? "Light mode" : "Dark mode";
-    }
-  </script>
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark");
+        }
+    </script>
 </body>
 </html>
