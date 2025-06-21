@@ -139,7 +139,7 @@ nav a {
     white-space: normal; /* Allow wrapping on smaller screens */
   }
 
-  .subheading {
+  .sub-heading {
     font-size: 1rem;
   }
 }
