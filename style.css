@@ -17,74 +17,79 @@ body {
 .overlay {
   width: 100%;
   height: 100%;
-  padding: 60px;
+  padding: 4vw;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   position: relative;
 }
 
-/* TOP LEFT */
+/* === TOP LEFT === */
 .top-left {
   position: absolute;
-  top: 60px;
-  left: 60px;
+  top: 4vw;
+  left: 4vw;
+  max-width: 40vw; /* limits width so it doesn't reach your face */
+  z-index: 2;
 }
 
+
 .pre-heading {
-  font-size: 2.5rem;
+  font-size: clamp(1.5rem, 2vw, 3rem);
   font-weight: bold;
   letter-spacing: 1px;
 }
 
 .main-heading {
-  font-size: 8rem;
+  font-size: clamp(4rem, 10vw, 12rem);
   font-weight: 900;
-  letter-spacing: -2px;
+  letter-spacing: -0.1vw;
   line-height: 1;
+  word-break: break-word;
 }
 
 .sub-heading {
-  margin-top: 20px;
-  font-size: 1.6rem;
+  margin-top: 1.5vw;
+  font-size: clamp(1rem, 1.8vw, 2rem);
   font-weight: 600;
+  max-width: 100%;
 }
 
-/* TOP RIGHT */
+/* === TOP RIGHT === */
 .top-right {
   position: absolute;
-  top: 60px;
-  right: 60px;
+  top: 4vw;
+  right: 4vw;
   text-align: right;
 }
 
 .location {
-  font-size: 1.1rem;
+  font-size: clamp(0.9rem, 1.2vw, 1.4rem);
   font-weight: bold;
   line-height: 1.4;
 }
 
 nav {
-  margin-top: 30px;
+  margin-top: 1.5vw;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.6vw;
 }
 
 nav a {
-  font-size: 1rem;
+  font-size: clamp(0.8rem, 1vw, 1.2rem);
   font-weight: bold;
   color: white;
   text-decoration: underline;
 }
 
-/* BOTTOM RIGHT */
+/* === BOTTOM RIGHT === */
 .bottom-right {
   position: absolute;
-  bottom: 60px;
-  right: 60px;
+  bottom: 4vw;
+  right: 4vw;
   text-align: right;
-  font-size: 1rem;
+  font-size: clamp(0.8rem, 1vw, 1.2rem);
 }
 
 .bottom-right a {
@@ -93,18 +98,10 @@ nav a {
   font-weight: bold;
 }
 
-/* RESPONSIVE */
+/* === RESPONSIVE — TABLET + MOBILE === */
 @media (max-width: 768px) {
   .main-heading {
-    font-size: 4rem;
-  }
-
-  .pre-heading {
-    font-size: 1.5rem;
-  }
-
-  .sub-heading {
-    font-size: 1.1rem;
+    font-size: 12vw;
   }
 
   .top-left,
@@ -122,7 +119,7 @@ nav a {
 
   nav {
     flex-direction: row;
-    gap: 15px;
+    gap: 20px;
     justify-content: center;
   }
 }
