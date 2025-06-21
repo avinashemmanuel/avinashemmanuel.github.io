@@ -29,7 +29,7 @@ body {
   position: absolute;
   top: 4vw;
   left: 4vw;
-  max-width: 35vw; /* limits width so it doesn't reach your face */
+  max-width: 45vw; /* limits width so it doesn't reach your face */
   z-index: 2;
 }
 
@@ -41,11 +41,11 @@ body {
 }
 
 .main-heading {
-  font-size: clamp(3rem, 6vw, 7rem); /* was up to 12rem */
+  font-size: clamp(3rem, 6vw, 6rem); /* slightly smaller max */
   font-weight: 900;
   line-height: 1;
-  word-break: break-word;
-  letter-spacing: -1px;
+  letter-spacing: -0.05em;
+  white-space: nowrap; /* THIS keeps AVINASH on one line */
 }
 
 .sub-heading {
