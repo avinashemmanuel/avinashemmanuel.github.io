@@ -5,194 +5,120 @@
 }
 
 body {
-  background: url('me.jpg') no-repeat center center fixed;
+  background: url('ME1.jpg') no-repeat center center fixed;
   background-size: cover;
-  font-family: 'Arial Black', sans-serif;
+  font-family: 'Arial', sans-serif;
   color: white;
-  position: relative;
-  overflow-x: hidden;
+  height: 100vh;
+  overflow: hidden;
 }
 
-.hero {
-  width: 100%;
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   height: 100vh;
-  position: relative;
-  padding: 5vw;
+  padding: 4vw;
+}
+
+.left-side {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  position: relative;
-}
-
-.overlay {
-  width: 100%;
-  height: 100%;
-  padding: 5vw;
-  position: relative;
-}
-
-/* === TOP LEFT === */
-.top-left {
-  top: 4vh;
-  left: 2.5vw;
-  position: absolute;
-  max-width: 40vw; /* tighter to avoid overlapping face */
-  z-index: 2;
-  padding: 1.5rem;
-}
-
-.pre-heading {
-  font-size: clamp(1.2rem, 1.8vw, 2.4rem);
-  font-weight: bold;
-  letter-spacing: 1px;
-}
-
-.main-heading {
-  font-size: clamp(3.2rem, 6vw, 4.5rem);
-  font-weight: 900;
-  line-height: 1.1;
-  white-space: nowrap;
-  max-width: 100%;
-}
-
-.sub-heading {
-  margin-top: 4.5rem;
-  font-size: clamp(1.1rem, 2.2vw, 2rem); /* slightly increased size */
-  font-weight: 600;
-  line-height: 1.4;
-  max-width: 80%;
-}
-
-/* === TOP RIGHT === */
-.top-right {
-  position: absolute;
-  top: 4vw;
-  right: 4vw;
-  text-align: right;
+  height: 80vh;
+  max-width: 20vw;
 }
 
 .location {
-  font-size: clamp(0.9rem, 1.2vw, 1.4rem);
+  font-size: 1rem;
   font-weight: bold;
+  line-height: 1.6;
+}
+
+.nav-links {
+  list-style: disc;
+  padding-left: 1rem;
+}
+
+.nav-links li {
+  margin: 0.8rem 0;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: underline;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.contact {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.contact a {
+  color: white;
+  text-decoration: underline;
+}
+
+.right-side {
+  text-align: right;
+  max-width: 45vw;
+}
+
+.pre {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1rem;
+}
+
+.name {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 2.5rem;
+  margin: 1rem 0;
+}
+
+.desc {
+  font-size: 1.1rem;
+  font-weight: 500;
   line-height: 1.4;
 }
 
-nav {
-  margin-top: 1.5vw;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6vw;
-}
-
-nav a {
-  font-size: clamp(1.0rem, 1vw, 1.2rem);
-  font-weight: bold;
-  color: white;
-  text-decoration: underline;
-}
-
-/* === BOTTOM RIGHT === */
-.bottom-right {
-  position: absolute;
-  bottom: 4vw;
-  right: 4vw;
-  text-align: right;
-  font-size: clamp(0.8rem, 1vw, 1.2rem);
-}
-
-.bottom-right a {
-  color: white;
-  text-decoration: underline;
-  font-weight: bold;
-}
-
-/* === RESPONSIVE — TABLET === */
-@media (max-width: 1024px) {
-  .top-left {
-    top: 3vh;
-    left: 3vw;
-    max-width: 50vw;
-  }
-
-  .main-heading {
-    font-size: clamp(1.8rem, 7vw, 3.5rem);
-  }
-
-  .sub-heading {
-    font-size: clamp(1rem, 2.5vw, 1.5rem);
-  }
-}
-
-/* === RESPONSIVE — MOBILE === */
+/* RESPONSIVE */
 @media (max-width: 768px) {
-  .overlay {
-    padding: 20px;
+  .container {
+    flex-direction: column;
     align-items: center;
+    text-align: center;
+    padding: 2rem;
   }
 
-  .top-left,
-  .top-right,
-  .bottom-right {
-    position: static;
-    text-align: center;
-    padding: 10px;
+  .left-side,
+  .right-side {
     max-width: 100%;
+    height: auto;
   }
 
-  .top-left {
-    text-align: center;
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    list-style: none;
+    padding: 0;
   }
 
-  .main-heading {
-    font-size: 2.2rem;
-    white-space: normal;
+  .nav-links li {
+    margin: 0.5rem 0;
   }
 
-  .sub-heading {
-    font-size: 1rem;
-    margin-top: 1rem;
-    max-width: 90%;
-  }
-
-  nav {
-    flex-direction: row;
-    gap: 20px;
-    justify-content: center;
-    margin-top: 1rem;
-  }
-
-  .bottom-right {
-    font-size: 1rem;
+  .right-side {
     margin-top: 2rem;
   }
-}
 
-/* === SUPER LARGE SCREENS (optional) === */
-@media (min-width: 1600px) {
-  .top-left {
-    max-width: 35vw;
-    padding: 3rem;
+  .name {
+    font-size: 1.8rem;
   }
 
-  .main-heading {
-    font-size: 6rem;
+  .desc {
+    font-size: 1rem;
   }
-
-  .sub-heading {
-    font-size: 2rem;
-  }
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-.about-section {
-  backdrop-filter: blur(10px);
-  border-radius: 12px;
-  margin: 0 auto;
-  max-width: 800px;
-  padding: 10vh 5vw;
-  background-color: rgba(0, 0, 0, 0.8);
-  color: white;
 }
