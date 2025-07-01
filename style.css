@@ -7,16 +7,16 @@
 body {
   background: url('me.jpg') no-repeat center center fixed;
   background-size: cover;
-  height: 100vh;
   font-family: 'Arial Black', sans-serif;
   color: white;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
-.overlay {
+.hero {
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  position: relative;
   padding: 5vw;
   display: flex;
   flex-direction: column;
@@ -24,11 +24,18 @@ body {
   position: relative;
 }
 
+.overlay {
+  width: 100%;
+  height: 100%;
+  padding: 5vw;
+  position: relative;
+}
+
 /* === TOP LEFT === */
 .top-left {
-  position: absolute;
   top: 4vh;
   left: 2.5vw;
+  position: absolute;
   max-width: 40vw; /* tighter to avoid overlapping face */
   z-index: 2;
   padding: 1.5rem;
