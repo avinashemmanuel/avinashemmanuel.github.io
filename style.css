@@ -78,7 +78,7 @@ nav {
 }
 
 nav a {
-  font-size: clamp(0.8rem, 1vw, 1.2rem);
+  font-size: clamp(1.0rem, 1vw, 1.2rem);
   font-weight: bold;
   color: white;
   text-decoration: underline;
@@ -174,4 +174,18 @@ nav a {
   .sub-heading {
     font-size: 2rem;
   }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.about-section {
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 10vh 5vw;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
 }
