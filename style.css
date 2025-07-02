@@ -9,8 +9,6 @@ body {
   background-size: cover;
   font-family: 'Arial', sans-serif;
   color: white;
-  height: 100vh;
-  overflow: hidden;
 }
 
 .container {
@@ -83,6 +81,117 @@ body {
   line-height: 1.4;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+.about-section {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 80px 0; 
+  box-sizing: border-box;
+  opacity: 0;
+}
+
+.about-content {
+  max-width: 950px;
+  margin: 0 auto;
+  padding: 0 12px;
+  color: #fff;
+  text-align: left;
+}
+
+.about-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.2rem;
+  font-weight: bold;
+}
+
+.about-content p {
+  font-size: 1.3rem;
+  line-height: 1.7;
+}
+
+.projects-section {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background: rgba(84, 48, 1, 0.5);
+  padding: 80px 0;
+  box-sizing: border-box;
+}
+
+.projects-content {
+  max-width: 950px;
+  margin: 0 auto;
+  padding: 0 12px;
+  color: #fff;
+  text-align: left;
+}
+
+.projects-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.2rem;
+  font-weight: bold;
+}
+
+.project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.project-item h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  margin-top: 32px
+}
+
+.project-item p {
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.project-item.highlight {
+  background: rgba(255, 255, 255, 0.05);
+  transform: scale(1.03);
+  transition: background 0.3s, transform 0.3s;
+}
+.project-item {
+  transition: background 0.3s, transform 0.3s;
+  padding: 16px;
+  border-radius: 12px;
+}
+
+#backToTop {
+  display: none;
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  font-size: 2rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: background 0.3s;
+}
+
+#backToTop:hover {
+  background: rgba(0, 0, 0, 0.9);
+}
 /* RESPONSIVE */
 @media (max-width: 768px) {
   .container {
