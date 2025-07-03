@@ -241,6 +241,42 @@ html {
   100% { transform: scale(1); }
 }
 
+.footer-section {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background: #111;
+  color: #fff;
+  padding: 20px 0 20px 0;
+  text-align: center;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+}
+
+.footer-content {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.footer-mail {
+  color: #ffb300;
+  text-decoration: underline;
+  margin-left: 8px;
+  transition: color 0.2s;
+}
+
+.footer-mail:hover {
+  color: #fff;
+}
+
+.footer-section {
+  opacity: 0;
+  transition: opacity 1s;
+}
 
 #backToTop {
   display: none;

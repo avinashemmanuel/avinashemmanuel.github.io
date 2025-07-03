@@ -89,3 +89,67 @@ window.addEventListener('scroll', function() {
         }
     }
 });
+
+function fadeSectionOnScroll(selector) {
+    const section = document.querySelector(selector);
+    if (section) {
+        const rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+            section.style.transition = 'opacity 1s';
+            section.style.opacity = 1;
+        } else {
+            section.style.transition = 'opacity 1s';
+            section.style.opacity = 0;
+        }
+    }
+}
+
+window.addEventListener('scroll', function() {
+    fadeSectionOnScroll('.about-section');
+    fadeSectionOnScroll('.projects-section');
+    fadeSectionOnScroll('.socials-section');
+});
+
+window.addEventListener('DOMContentLoaded', function() {
+    fadeSectionOnScroll('.about-section');
+    fadeSectionOnScroll('.projects-section');
+    fadeSectionOnScroll('.socials-section');
+});
+
+const footerMail = document.querySelector('.footer-mail');
+if (footerMail) {
+    footerMail.addEventListener('click', function(e) {
+        e.preventDefault();
+        navigator.clipboard.writeText(footerMail.textContent.trim());
+        let tooltip = document.createElement('span');
+        tooltip.textContent = "Copied!";
+        tooltip.style.marginLeft = "8px";
+        tooltip.style.color = "#ffb300";
+        tooltip.style.fontSize = "0.95em";
+        tooltip.className = "footer-tooltip";
+        footerMail.parentNode.appendChild(tooltip);
+        setTimeout(() => {
+            tooltip.remove();
+        }, 1200);
+    });
+}
+
+window.addEventListener('scroll', function() {
+    const footer = this.document.querySelector('.footer-section');
+    if (footer) {
+        const rect = footer.getBoundingClientRect();
+        if (rect.top < this.window.innerHeight - 50) {
+            footer.style.transition = 'opacity 1s';
+            footer.style.opacity = 1;
+        } else {
+            footer.style.transition = 'opacity 1s';
+            footer.style.opacity = 0;
+        }
+    }
+});
+window.addEventListener('DOMContentLoaded', function() {
+    const footer = this.document.querySelector('.footer-section');
+    if (footer) {
+        footer.style.opacity = 0;
+    }
+});
