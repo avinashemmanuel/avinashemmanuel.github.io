@@ -5,10 +5,10 @@
 }
 
 body {
-  background: url('me1.jpg') no-repeat center center fixed;
+  /* background: url('me1.jpg') no-repeat center center fixed;
   background-size: cover;
   -webkit-background-size: cover;
-  background-attachment: scroll;
+  background-attachment: scroll;*/
   font-family: 'Arial', sans-serif;
   color: white;
 }
@@ -529,7 +529,7 @@ body::before {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
   z-index: -1;
-  background: url('me1.jpg') no-repeat center center;
+  background: url('me1.png') no-repeat center center;
   background-size: cover;
   -webkit-background-size: cover;
   background-attachment: scroll;
