@@ -7,11 +7,11 @@ window.addEventListener('scroll', function() {
     }
 });
 
-const nameEl = document.querySelector('.name');
+var nameEl = document.querySelector('.name');
 if (nameEl) {
-    const text = nameEl.textContent;
+    var text = nameEl.textContent;
     nameEl.textContent = '';
-    let i = 0;
+    var i = 0;
     function type() {
         if (i < text.length) {
             nameEl.textContent += text.charAt(i);
@@ -91,9 +91,9 @@ window.addEventListener('scroll', function() {
 });
 
 function fadeSectionOnScroll(selector) {
-    const section = document.querySelector(selector);
+    var section = document.querySelector(selector);
     if (section) {
-        const rect = section.getBoundingClientRect();
+        var rect = section.getBoundingClientRect();
         if (rect.top < window.innerHeight - 100) {
             section.style.transition = 'opacity 1s';
             section.style.opacity = 1;
@@ -108,12 +108,14 @@ window.addEventListener('scroll', function() {
     fadeSectionOnScroll('.about-section');
     fadeSectionOnScroll('.projects-section');
     fadeSectionOnScroll('.socials-section');
+    fadeSectionOnScroll('.footer-section');
 });
 
 window.addEventListener('DOMContentLoaded', function() {
     fadeSectionOnScroll('.about-section');
     fadeSectionOnScroll('.projects-section');
     fadeSectionOnScroll('.socials-section');
+    fadeSectionOnScroll('.footer-section');
 });
 
 const footerMail = document.querySelector('.footer-mail');
