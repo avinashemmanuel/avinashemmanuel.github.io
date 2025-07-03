@@ -70,3 +70,22 @@ window.addEventListener('scroll', function() {
         }
     }
 });
+
+document.querySelectorAll('.social-link').forEach(link => {
+    link.addEventListener('mousemaster', () => {
+        link.classList.add('pulse');
+    });
+    link.addEventListener('mouseleave', () => {
+        link.classList.remove('pulse');
+    });
+});
+window.addEventListener('scroll', function() {
+    const socials = this.document.querySelector('.socials-section');
+    if (socials) {
+        const rect = socials.getBoundingClientRect();
+        if (rect.top < this.window.innerHeight - 100) {
+            socials.style.transition = 'opacity 1s';
+            socials.style.opacity = 1;
+        }
+    }
+});
