@@ -303,12 +303,24 @@ html {
 
 
 @media (max-width: 600px) {
-  body, html {
+  html, body {
     width: 100vw;
     min-height: 100vh;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
+  }
+
+  body {
+    background: url('me1.jpg') no-repeat center center;
+    background-size: cover;
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    -webkit-background-size: cover;
+    background-attachment: scroll;
   }
 
   .container {
@@ -333,12 +345,14 @@ html {
   }
 
   .right-side {
-    position: static;
-    width: 100vw;
-    z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    width: 100vw;
+    margin-top: 12vw;
+    margin-bottom: 8vw;
+    position: static;
+    z-index: 2;
   }
 
   .pre,
@@ -351,24 +365,29 @@ html {
 
   .pre {
     font-family: 'Press Start 2P', cursive;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: #fff;
-    margin-bottom: 0.5rem;
-    margin-top: 8vw;
+    margin-bottom: 0.7rem;
+    margin-top: 0;
+    letter-spacing: 0.03em;
   }
 
   .name {
     font-family: 'Press Start 2P', cursive;
-    font-size: 2.5rem;
+    font-size: 2.3rem;
     color: #fff;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2.2rem;
+    margin-top: 0;
+    line-height: 1.1;
   }
 
   .desc {
-    font-size: 1.3rem;
+    font-size: 1.25rem;
     color: #fff;
-    margin-bottom: 4rem;
+    margin-bottom: 2.5rem;
     margin-top: 0;
+    font-weight: 500;
+    line-height: 1.4;
   }
 
   .location {
@@ -376,15 +395,14 @@ html {
     margin-left: 5vw;
     text-align: left;
     color: #fff;
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     font-weight: bold;
-    z-index: 2;
-    margin-bottom: 2rem;
-    margin-top: 2rem;
+    margin-bottom: 2.5rem;
+    margin-top: 0;
     position: static;
     padding-left: 0;
-    bottom: auto;
-    left: auto;
+    z-index: 2;
+    letter-spacing: 0.01em;
   }
 
   .nav-links, .contact {
@@ -409,7 +427,7 @@ html {
   .projects-section,
   .socials-section {
     padding: 48px 0 48px 0;
-    
+  
     box-sizing: border-box;
     opacity: 0;
     transition: opacity 1s;
@@ -444,6 +462,11 @@ html {
     gap: 32px;
   }
 
+  .project-item {
+    padding: 12px 0;
+    border-radius: 10px;
+  }
+
   .project-item h3 {
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
@@ -473,6 +496,7 @@ html {
     padding: 24px 0 18px 0;
     text-align: center;
     font-size: 0.9rem;
+    letter-spacing: 0.02em;
     opacity: 0;
     transition: opacity 1s;
   }
@@ -491,5 +515,9 @@ html {
 
   .footer-mail:hover {
     color: #fff;
+  }
+
+  body::-webkit-scrollbar {
+    display: none;
   }
 }
