@@ -9,7 +9,7 @@ window.addEventListener('scroll', function() {
 
 var nameEl = document.querySelector('.name');
 if (nameEl) {
-    var text = nameEl.textContent;
+    var text = nameEl.textContent.trim();
     nameEl.textContent = '';
     var i = 0;
     function type() {
@@ -19,7 +19,13 @@ if (nameEl) {
             setTimeout(type, 100);
         }
     }
-    type();
+    if (document.fonts && document.fonts.load) {
+        document.fonts.load('1em "Press Start 2P"').then(function() {
+            setTimeout(type, 100);
+        });
+    } else {
+        type();
+    }
 }
 
 const backToTopBtn = document.getElementById('backToTop');
@@ -155,3 +161,28 @@ window.addEventListener('DOMContentLoaded', function() {
         footer.style.opacity = 0;
     }
 });
+
+var menuBtn = document.getElementById('menuBtn');
+var mobileMenu = document.getElementById('mobileMenu');
+var closeMenuBtn = document.getElementById('closeMenuBtn');
+
+if (menuBtn && mobileMenu && closeMenuBtn) {
+    menuBtn.addEventListener('click', function() {
+        mobileMenu.classList.add('open');
+        menuBtn.classList.add('hide'); // Hide menu button
+        document.body.style.overflow = 'hidden';
+    });
+    closeMenuBtn.addEventListener('click', function () {
+        mobileMenu.classList.remove('open');
+        menuBtn.classList.remove('hide'); // Show menu button
+        document.body.style.overflow = '';
+    });
+    var mobileLinks = mobileMenu.querySelectorAll('a');
+    for (var i = 0; i < mobileLinks.length; i++) {
+        mobileLinks[i].addEventListener('click', function() {
+            mobileMenu.classList.remove('open');
+            menuBtn.classList.remove('hide'); // Show menu button
+            document.body.style.overflow = '';
+        });
+    }
+}
