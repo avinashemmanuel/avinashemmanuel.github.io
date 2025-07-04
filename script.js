@@ -7,26 +7,28 @@ window.addEventListener('scroll', function() {
     }
 });
 
-var nameEl = document.querySelector('.name');
-if (nameEl) {
-    var text = nameEl.textContent.trim();
-    nameEl.textContent = '';
-    var i = 0;
-    function type() {
-        if (i < text.length) {
-            nameEl.textContent += text.charAt(i);
-            i++;
-            setTimeout(type, 100);
+document.addEventListener('DOMContentLoaded', function() {
+    var nameEl = document.querySelector('.name');
+    if (nameEl) {
+        var text = nameEl.getAttribute('data-text') || nameEl.textContent.trim();
+        nameEl.textContent = '';
+        var i = 0;
+        function type() {
+            if (i < text.length) {
+                nameEl.textContent += text.charAt(i);
+                i++;
+                setTimeout(type, 100);
+            }
+        }
+        if (document.fonts && document.fonts.load) {
+            document.fonts.load('1em "Press Start 2P"').then(function() {
+                setTimeout(type, 100);
+            });
+        } else {
+            type();
         }
     }
-    if (document.fonts && document.fonts.load) {
-        document.fonts.load('1em "Press Start 2P"').then(function() {
-            setTimeout(type, 100);
-        });
-    } else {
-        type();
-    }
-}
+});
 
 const backToTopBtn = document.getElementById('backToTop');
 window.addEventListener('scroll', function() {

@@ -15,9 +15,11 @@ body {
 
 .container {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   height: 100vh;
+  width: 100vw;
   padding: 4vw;
 }
 
@@ -280,6 +282,11 @@ html {
   transition: opacity 1s;
 }
 
+.menu-btn,
+.mobile-menu {
+  display: none;
+}
+
 #backToTop {
   display: none;
   position: fixed;
@@ -300,6 +307,18 @@ html {
 
 #backToTop:hover {
   background: rgba(0, 0, 0, 0.9);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: -1;
+  background: url('me1.png') no-repeat center center;
+  background-size: cover;
+  -webkit-background-size: cover;
+  background-attachment: scroll;
+  opacity: 1;
 }
 
 
@@ -522,21 +541,7 @@ html {
   body::-webkit-scrollbar {
     display: none;
   }
-}
 
-body::before {
-  content: "";
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  z-index: -1;
-  background: url('me1.png') no-repeat center center;
-  background-size: cover;
-  -webkit-background-size: cover;
-  background-attachment: scroll;
-  opacity: 1;
-}
-
-@media (max-width: 600px) {
   .menu-btn {
     position: fixed;
     top: 18px;
