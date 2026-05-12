@@ -1,47 +1,603 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Avinash Emmanuel</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&family=Outfit:wght@300;400&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0e0e0f;
+      --bg-2:      #131315;
+      --border:    rgba(255,255,255,0.07);
+      --muted:     #4a4a52;
+      --sub:       #7a7a85;
+      --body:      #b8b8c0;
+      --head:      #e8e8ec;
+      --accent:    #c8a97e;        /* warm parchment gold — very restrained */
+      --accent-2:  rgba(200,169,126,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--body);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── Noise grain overlay ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.025;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 22px 0;
+      background: linear-gradient(to bottom, var(--bg) 60%, transparent);
+    }
+
+    nav .inner {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-family: 'Cormorant Garant', serif;
+      font-size: 17px;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: var(--head);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sub);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── Hero ── */
+    #hero {
+      padding-top: 160px;
+      padding-bottom: 100px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.2s ease forwards;
+    }
+
+    .hero-name {
+      font-family: 'Cormorant Garant', serif;
+      font-size: clamp(54px, 10vw, 88px);
+      font-weight: 300;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      color: var(--head);
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.35s ease forwards;
+    }
+
+    .hero-name em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-desc {
+      max-width: 480px;
+      color: var(--sub);
+      font-size: 15px;
+      line-height: 1.8;
+      margin-bottom: 48px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.5s ease forwards;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.65s ease forwards;
+    }
+
+    .btn-primary {
+      padding: 12px 28px;
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.25s, color 0.25s;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent);
+      color: var(--bg);
+    }
+
+    .btn-ghost {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s;
+    }
+
+    .btn-ghost:hover { color: var(--body); }
+    .btn-ghost::after { content: '↓'; font-size: 13px; }
+
+    /* ── Divider ── */
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0;
+    }
+
+    /* ── Sections ── */
+    section {
+      padding: 96px 0;
+    }
+
+    .section-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 48px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .section-tag::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--muted);
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garant', serif;
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 300;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      color: var(--head);
+      margin-bottom: 28px;
+    }
+
+    .section-title em { font-style: italic; color: var(--accent); }
+
+    /* ── About ── */
+    #about .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px 64px;
+    }
+
+    .about-text {
+      grid-column: 1 / -1;
+      color: var(--body);
+      font-size: 16px;
+      line-height: 1.85;
+      max-width: 580px;
+    }
+
+    .about-text strong {
+      color: var(--head);
+      font-weight: 400;
+    }
+
+    /* ── Interests ── */
+    .interests-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 40px;
+    }
+
+    .tag {
+      padding: 7px 16px;
+      border: 1px solid var(--border);
+      background: var(--bg-2);
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: var(--sub);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .tag:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ── Roles ── */
+    #roles .roles-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-top: 16px;
+    }
+
+    .role-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      padding: 36px 32px;
+      transition: border-color 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .role-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 2px; height: 0;
+      background: var(--accent);
+      transition: height 0.3s ease;
+    }
+
+    .role-card:hover { border-color: var(--border); }
+    .role-card:hover::before { height: 100%; }
+
+    .role-number {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      margin-bottom: 18px;
+    }
+
+    .role-title {
+      font-family: 'Cormorant Garant', serif;
+      font-size: 26px;
+      font-weight: 400;
+      color: var(--head);
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .role-desc {
+      font-size: 13.5px;
+      color: var(--sub);
+      line-height: 1.75;
+    }
+
+    /* ── Contact ── */
+    #contact {
+      padding-bottom: 120px;
+    }
+
+    .contact-line {
+      font-family: 'Cormorant Garant', serif;
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 300;
+      color: var(--body);
+      line-height: 1.5;
+      max-width: 520px;
+      margin-bottom: 48px;
+    }
+
+    .contact-line em {
+      font-style: italic;
+      color: var(--head);
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      max-width: 420px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      transition: padding-left 0.25s;
+    }
+
+    .contact-item:hover { padding-left: 8px; }
+
+    .contact-item:hover .contact-item-label { color: var(--head); }
+    .contact-item:hover .contact-item-arrow { color: var(--accent); }
+
+    .contact-item-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--sub);
+      transition: color 0.2s;
+    }
+
+    .contact-item-arrow {
+      color: var(--muted);
+      font-size: 16px;
+      transition: color 0.2s;
+    }
+
+    /* ── Footer ── */
+    footer {
+      padding: 28px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    footer .inner {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-copy {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+    }
+
+    .footer-loc {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .footer-loc::before {
+      content: '◎';
+      font-size: 9px;
+      color: var(--accent);
+    }
+
+    /* ── Animations ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      #about .about-grid,
+      #roles .roles-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-cta { flex-direction: column; align-items: flex-start; }
+
+      footer .inner { flex-direction: column; gap: 8px; }
+    }
+  </style>
 </head>
 <body>
-  <section class="mount">
-    <div class="mount-overlay"></div>
 
-    <p class="mount-tagline">CRAFTING DIGITAL EXPERIENCES</p>
+  <!-- Nav -->
+  <nav>
+    <div class="inner">
+      <a class="logo" href="#">AE</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#roles">Work</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
 
-    <div class="mount-content">
-      <h1 class="mount-title">Avinash Emmanuel</h1>
-      <p class="mount-subtitle">A Developer / Musician</p>
-      <a href="#about" class="mount-link">Read more...</a>
+  <!-- Hero -->
+  <section id="hero">
+    <div class="container">
+      <p class="hero-label">Developer &amp; Musician</p>
+      <h1 class="hero-name">Avinash<br><em>Emmanuel</em></h1>
+      <p class="hero-desc">
+        Crafting digital experiences that resonate. Exploring the
+        intersection of technology, security, and sound from Dehradun, India.
+      </p>
+      <div class="hero-cta">
+        <a href="#about" class="btn-primary">Get to know me</a>
+        <a href="#contact" class="btn-ghost">Let's connect</a>
+      </div>
     </div>
   </section>
 
-  <section id="about" class="about">
-  <div class="about-inner">
-    <div class="about-text">
-      <h2>Get to Know<br>Avinash</h2>
+  <hr class="section-divider">
 
-      <p>
-        Avinash is a passionate developer and musician based in Dehradun,
-        India. He loves crafting digital experiences that resonate with users.
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <p class="section-tag reveal">About</p>
+      <h2 class="section-title reveal">A curious mind at the<br><em>edge of code &amp; melody</em></h2>
+      <div class="about-grid">
+        <p class="about-text reveal">
+          Avinash is a passionate <strong>developer and musician</strong> based in Dehradun, India.
+          He loves building digital experiences that feel intuitive and alive — deeply invested in
+          the craft of both engineering and performance.<br><br>
+          His technical curiosity spans <strong>AI &amp; Machine Learning</strong>, secure systems,
+          data science, and the emerging field of <strong>ML Security</strong>. Outside of code,
+          he works as a music educator and performer — bringing the same precision to rhythm
+          that he brings to architecture.
+        </p>
+      </div>
+
+      <div class="interests-list reveal">
+        <span class="tag">AI &amp; Machine Learning</span>
+        <span class="tag">ML Security</span>
+        <span class="tag">Secure Systems</span>
+        <span class="tag">Data Science</span>
+        <span class="tag">DBMS</span>
+        <span class="tag">Music Performance</span>
+        <span class="tag">Music Education</span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- Roles -->
+  <section id="roles">
+    <div class="container">
+      <p class="section-tag reveal">What I do</p>
+      <h2 class="section-title reveal">Two disciplines,<br><em>one thread</em></h2>
+      <div class="roles-grid">
+
+        <div class="role-card reveal">
+          <p class="role-number">01</p>
+          <h3 class="role-title">Software<br>Developer</h3>
+          <p class="role-desc">
+            Building robust applications with a focus on intelligent systems,
+            security, and clean architecture. Driven by curiosity and a desire to innovate.
+          </p>
+        </div>
+
+        <div class="role-card reveal">
+          <p class="role-number">02</p>
+          <h3 class="role-title">Musician &amp;<br>Educator</h3>
+          <p class="role-desc">
+            Performing and teaching music — translating the structure of theory
+            into lived, expressive experience for students and audiences alike.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <p class="section-tag reveal">Contact</p>
+      <p class="contact-line reveal">
+        Have a project, a question,<br>or just want to <em>say hello?</em>
       </p>
 
-      <p>
-        Avinash keeps a keen interest in AI & ML, Secure Systems, Data Science,
-        DBMS, and ML Security. His journey in tech is driven by curiosity and a
-        desire to innovate. He is also a music educator and performer.
-      </p>
+      <div class="contact-links reveal">
+        <a href="https://github.com/avinashemmanuel" target="_blank" rel="noopener" class="contact-item">
+          <span class="contact-item-label">GitHub</span>
+          <span class="contact-item-arrow">↗</span>
+        </a>
+        <a href="mailto:avinash@example.com" class="contact-item">
+          <span class="contact-item-label">Email</span>
+          <span class="contact-item-arrow">↗</span>
+        </a>
+        <a href="https://linkedin.com/in/avinashemmanuel" target="_blank" rel="noopener" class="contact-item">
+          <span class="contact-item-label">LinkedIn</span>
+          <span class="contact-item-arrow">↗</span>
+        </a>
+      </div>
     </div>
+  </section>
 
-    <div class="about-image">
-      <img src="images/me.jpg" alt="Avinash Emmanuel">
+  <!-- Footer -->
+  <footer>
+    <div class="inner">
+      <span class="footer-copy">© 2025 Avinash Emmanuel</span>
+      <span class="footer-loc">Dehradun, India</span>
     </div>
-  </div>
-</section>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          // Stagger siblings in the same parent
+          const siblings = [...e.target.parentElement.querySelectorAll('.reveal:not(.visible)')];
+          const idx = siblings.indexOf(e.target);
+          setTimeout(() => {
+            e.target.classList.add('visible');
+          }, idx * 80);
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    reveals.forEach(r => io.observe(r));
+  </script>
 
 </body>
 </html>
